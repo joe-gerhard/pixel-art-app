@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components';
+import { ITheme } from '../../styles/theme';
 
-interface IProps {
-  theme: {
-    primary: string;
-    accent: string;
-    light: string;
-    dark: string;
-  }
+type IProps = {
+  theme: ITheme;
+  color?: string;
 }
 
 const Toolbar = styled('section')<IProps>(({ theme }) => css`
@@ -16,6 +13,21 @@ const Toolbar = styled('section')<IProps>(({ theme }) => css`
   margin: 0 20px;
 `);
 
+const ColorPicker = styled('div')<IProps>(({ theme }) => css`
+  background: ${theme.light};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`);
+
+const Pixel = styled('div')<IProps>(({ theme, color }) => css`
+  height: 1px;
+  width: 1px; 
+  background: ${color};
+`);
+
 export const Styled = {
   Toolbar,
+  ColorPicker,
+  Pixel,
 }

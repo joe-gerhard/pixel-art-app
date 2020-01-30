@@ -1,4 +1,4 @@
-export interface ITheme {
+export type ITheme = {
   primary: string;
   accent: string;
   dark: string;

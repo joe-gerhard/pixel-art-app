@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Styled } from './styles';
+import ColorPicker from './ColorPicker';
 
 const Toolbar: React.FC = () => {
   return (
     <Styled.Toolbar>
-      this is the toolbar
+      <ColorPicker />
     </Styled.Toolbar>
   )
 }
