@@ -1,19 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Dispatch } from 'react';
 import { Styled } from './styles';
 import Canvas from '../Canvas';
 import Toolbar from '../Toolbar';
 import Menu from '../Menu';
+import { useDispatch } from 'react-redux';
+import { UserInputActions } from '../../redux/actions/UserInputActions';
 
 const App: React.FC = () => {
 
-  const handleMouseDown = (): void => {
-    
-  }
+  const dispatch = useDispatch<Dispatch<UserInputActions>>()
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleMouseDown)
 
-  })
+    const handleMouseDown = (): void => {
+      dispatch({ 
+        type: 'SET_MOUSE_DOWN'
+      })
+    }
+  
+    const handleMouseUp = (): void => {
+      dispatch({
+        type: 'SET_MOUSE_UP'
+      })
+    }
+
+    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mouseup', handleMouseUp);
+
+  },[dispatch])
+
   return (
    <Styled.App>
      <Menu />
