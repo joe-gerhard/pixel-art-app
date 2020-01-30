@@ -1,7 +1,5 @@
-import { 
-  CanvasActions, 
-  CanvasActionTypes,
-} from '../actions/CanvasActions';
+import { CanvasActions } from '../actions/CanvasActions';
+import _ from 'lodash';
 
 export interface ICanvasState {
   height: number;
@@ -21,22 +19,30 @@ export const canvasReducer = (
 ): ICanvasState => {
   switch(action.type) {
 
-    case CanvasActionTypes.SET_HEIGHT:
+    case 'SET_HEIGHT':
       return {
         ...state,
         height: action.value,
       }
 
-    case CanvasActionTypes.SET_WIDTH:
+    case 'SET_WIDTH':
       return {
         ...state,
         width: action.value,
       }
 
-    case CanvasActionTypes.DRAW_PIXELS:
+    case 'DRAW_PIXELS':
       return {
         ...state,
         pixels: drawPixels(state.width, state.height)
+      }
+
+    case 'COLOR_PIXEL':
+      const tempPixels = _.cloneDeep(state.pixels)
+      tempPixels[action.pixel.y][action.pixel.x] = action.color
+      return {
+        ...state,
+        pixels: tempPixels,
       }
 
     default: return state;

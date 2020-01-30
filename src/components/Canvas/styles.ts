@@ -17,8 +17,10 @@ const Canvas = styled('section')<IProps>(({ theme }) => css`
   justify-content: center;
   align-items: center;
   background: ${theme.primary};
-  padding: 20px;
+  width: 1000px;
+  height: 600px;
   border-radius: 3px;
+  overflow: scroll;
 `);
 
 const Row = styled('div')<IProps>(({ theme }) => css`

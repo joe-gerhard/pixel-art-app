@@ -1,12 +1,4 @@
 
-// ---- Action Constants ---- //
-export enum CanvasActionTypes {
-  SET_HEIGHT = 'SET_HEIGHT',
-  SET_WIDTH = 'SET_WIDTH',
-  DRAW_PIXELS = 'DRAW_PIXELS',
-}
-
-
 // ---- Action Interfaces ---- //
 export interface ICanvasSetHeightAction {
   readonly type: 'SET_HEIGHT';
@@ -22,32 +14,19 @@ export interface ICanvasDrawPixelsAction {
   readonly type: 'DRAW_PIXELS';
 }
 
+export interface ICanvasColorPixelAction {
+  readonly type: 'COLOR_PIXEL';
+  pixel: {
+    x: number;
+    y: number;
+  }
+  color: string;
+}
+
 
 // ---- Action Types ---- //
 export type CanvasActions = 
 | ICanvasSetHeightAction 
 | ICanvasSetWidthAction 
 | ICanvasDrawPixelsAction
-
-
-// ---- Actions ---- //
-export const setHeight = (height: number) => ({
-  type: CanvasActionTypes.SET_HEIGHT,
-  payload: height,
-})
-
-export const setWidth = (width: number) => ({
-  type: CanvasActionTypes.SET_WIDTH,
-  payload: width,
-})
-
-export const drawPixels = () => ({
-  type: CanvasActionTypes.DRAW_PIXELS
-})
-
-
-// --- Inferred Action Types ---- //
-export type CanvasActionsInferred = 
-| ReturnType<typeof setHeight>
-| ReturnType<typeof setWidth>
-| ReturnType<typeof drawPixels>
+| ICanvasColorPixelAction
