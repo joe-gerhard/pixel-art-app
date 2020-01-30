@@ -1,15 +1,15 @@
 import React from 'react';
 import { Styled } from './styles';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../redux/reducers/rootReducer';
 
-type IProps = {
-  canvas: string[][];
-}
+const Canvas: React.FC = () => {
 
-const Canvas: React.FC<IProps> = ({ canvas }) => {
-
+  const { pixels } = useSelector((state: AppState) => state.canvas)
+  
   return (
     <Styled.Canvas>
-      {canvas.map((row: string[], rIdx: number) => 
+      {pixels.map((row: string[], rIdx: number) => 
         <Styled.Row key={`r${rIdx}`}>
           {row.map((pixelColor: string, cIdx: number) =>
             <Styled.Pixel key={`${cIdx}${rIdx}`} color={pixelColor} />
