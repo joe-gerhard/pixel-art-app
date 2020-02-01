@@ -16,7 +16,7 @@ const Canvas = styled('section')<IProps>(({ theme }) => css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${theme.primary};
+  background: ${theme.dark};
   width: 1000px;
   height: 600px;
   border-radius: 3px;
