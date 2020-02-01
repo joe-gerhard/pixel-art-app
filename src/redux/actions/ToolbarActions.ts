@@ -5,5 +5,11 @@ export interface ISetSelectedColorAction {
   color: RGB
 }
 
+export interface ISetSelectedHueAction {
+  readonly type: 'SET_SELECTED_HUE';
+  hue: number;
+}
+
 export type ToolbarActions = 
 | ISetSelectedColorAction
+| ISetSelectedHueAction

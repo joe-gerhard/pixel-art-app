@@ -23,6 +23,11 @@ export const toolbarReducer = (
           ...state,
           selectedColor: action.color,
         }
+      case 'SET_SELECTED_HUE':
+        return {
+          ...state,
+          selectedHue: action.hue,
+        }
       default: 
         return state;
     }
