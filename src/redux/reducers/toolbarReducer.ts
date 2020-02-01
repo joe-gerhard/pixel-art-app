@@ -10,7 +10,7 @@ export interface IToolBarState {
 export const initialToolBarState: IToolBarState = {
   selectedColor: { r: 0, g: 0, b: 0 },
   selectedHue: 0,
-  colorPickerWidth: 100,
+  colorPickerWidth: 200,
 }
 
 export const toolbarReducer = (

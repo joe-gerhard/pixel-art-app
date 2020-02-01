@@ -8,11 +8,11 @@ export const getClickPosition = (
   colorPickerRef: React.RefObject<HTMLDivElement>): ClickPosition => {
 
   let x: number = 0;
-  let y: number = 100;
+  let y: number = 0;
 
   if (colorPickerRef.current) {
     x = e.pageX + 1 - colorPickerRef.current.offsetLeft;
-    y -= (e.pageY + 1 - colorPickerRef.current.offsetTop);
+    y = colorPickerRef.current.offsetHeight - (e.pageY + 1 - colorPickerRef.current.offsetTop);
   }
   
   return {

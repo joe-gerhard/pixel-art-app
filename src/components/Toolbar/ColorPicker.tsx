@@ -13,8 +13,8 @@ const ColorPicker: React.FC = () => {
 
   const handleClick = ((e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     const clickPosition: ClickPosition = getClickPosition(e, colorPickerRef);
-    const saturation: number = clickPosition.x / 100;
-    const value: number = clickPosition.y / 100;
+    const saturation: number = clickPosition.x / colorPickerWidth;
+    const value: number = clickPosition.y / colorPickerWidth;
     const hsvObj: HSV = { h: selectedHue, s: saturation, v: value };
     const rgbObj: RGB = HSVtoRGB(hsvObj);
     toolbarDispatch({ type: 'SET_SELECTED_COLOR', color: rgbObj})
