@@ -3,6 +3,7 @@ import { Styled } from './styles';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../redux/reducers/rootReducer';
 import Pixel from './Pixel';
+import { RGB } from '../Toolbar/helpers';
 
 const Canvas: React.FC = () => {
 
@@ -10,9 +11,9 @@ const Canvas: React.FC = () => {
   
   return (
     <Styled.Canvas>
-      {pixels.map((row: string[], yIdx: number) => 
+      {pixels.map((row: RGB[], yIdx: number) => 
         <Styled.Row key={`r${yIdx}`}>
-          {row.map((pixelColor: string, xIdx: number) =>
+          {row.map((pixelColor: RGB, xIdx: number) =>
             <Pixel key={`${xIdx}${yIdx}`} color={pixelColor} x={xIdx} y={yIdx} />
           )}
         </Styled.Row>

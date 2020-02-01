@@ -1,10 +1,11 @@
 import { CanvasActions } from '../actions/CanvasActions';
 import _ from 'lodash';
+import { RGB } from '../../components/Toolbar/helpers';
 
 export interface ICanvasState {
   height: number;
   width: number;
-  pixels: string[][];
+  pixels: RGB[][];
 }
 
 const initialCanvasState: ICanvasState = {
@@ -51,16 +52,17 @@ export const canvasReducer = (
 
 
 
-function drawPixels(width: number = 16, height: number = 16): string[][] {
+function drawPixels(width: number = 16, height: number = 16): RGB[][] {
 
-  let canvas: string[][] = [];
+  let canvas: RGB[][] = [];
 
   for(let i = 0; i < height; i++) {
 
-    let row: string[] = [];
+    let row: RGB[] = [];
 
     for(let j = 0; j < width; j++) {
-      row.push('#FFFFFF');
+      let color: RGB = { r: 255, g: 255, b: 255 }
+      row.push(color);
     }
 
     canvas.push(row)

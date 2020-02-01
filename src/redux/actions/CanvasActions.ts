@@ -1,3 +1,4 @@
+import { RGB } from "../../components/Toolbar/helpers";
 
 // ---- Action Interfaces ---- //
 export interface ICanvasSetHeightAction {
@@ -20,7 +21,7 @@ export interface ICanvasColorPixelAction {
     x: number;
     y: number;
   }
-  color: string;
+  color: RGB;
 }
 
 

@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
+import { RGB } from '../Toolbar/helpers';
+import { Theme } from '../../styles/theme'
 
 interface IProps {
-  theme: {
-    primary: string;
-    accent: string;
-    light: string;
-    dark: string;
-  }
+  theme: Theme;
+}
 
-  color?: string;
+interface IPixelProps {
+  theme: Theme;
+  color: any & RGB; //TODO: figure out bug with interface setting type of 'color' to 'string & RGB'
 }
 
 const Canvas = styled('section')<IProps>(({ theme }) => css`
@@ -28,11 +28,11 @@ const Row = styled('div')<IProps>(({ theme }) => css`
   align-items: center;
 `);
 
-const Pixel = styled('div')<IProps>(({ theme, color }) => css`
+const Pixel = styled('div')<IPixelProps>(({ theme, color }) => css`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${color};
+  background: ${`rgb(${color.r},${color.g},${color.b})`};
   height: 20px;
   width: 20px;
 `);

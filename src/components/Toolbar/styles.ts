@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { ITheme } from '../../styles/theme';
+import { Theme } from '../../styles/theme';
 
 type IProps = {
-  theme: ITheme;
+  theme: Theme;
   color?: string;
 }
 
@@ -18,14 +18,11 @@ const Toolbar = styled('section')<IProps>(({ theme }) => css`
 `);
 
 const ColorPicker = styled('div')<IProps>(({ theme }) => css`
-  background: linear-gradient(0deg, rgba(0,0,0, 1), rgba(0,0,0,0)),              
-              linear-gradient(90deg, rgba(255,255,255, 1), rgba(255,255,255, 0));
-  background-color: green;
+  background: linear-gradient(0deg, hsla(0deg,0%,0%, 1), hsla(0deg,100%,50%,0)),             
+              linear-gradient(90deg, hsla(0deg,0%,100%, 1), hsla(0deg,100%,50%, 0));
+  background-color: hsla(0deg, 100%, 50%, 1);
   height: 100px;
   width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `);
 
 export const Styled = {
