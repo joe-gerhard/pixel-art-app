@@ -26,7 +26,7 @@ const Pixel: React.FC<IProps> = ({ color, x, y}) => {
   }
 
   return (
-    <Styled.Pixel color={color} onClick={handleChangePixelColor} onMouseEnter={handleMouseEnter} />
+    <Styled.Pixel color={color} onMouseDown={handleChangePixelColor} onMouseEnter={handleMouseEnter} />
   )
 }
 
