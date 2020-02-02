@@ -6,8 +6,10 @@ import HueSlider from './HueSlider';
 const Toolbar: React.FC = () => {
   return (
     <Styled.Toolbar>
-      <ColorPicker />
-      <HueSlider />
+      <Styled.BorderWrapper>
+        <ColorPicker />
+        <HueSlider />
+      </Styled.BorderWrapper>
     </Styled.Toolbar>
   )
 }

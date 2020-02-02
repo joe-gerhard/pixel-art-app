@@ -2,10 +2,12 @@ import { UserInputActions } from '../actions/UserInputActions';
 
 export interface IUserInputState {
   mouseDown: boolean;
+  mouseInsideColorPicker: boolean;
 }
 
 export const initialUserInputState: IUserInputState = {
   mouseDown: false,
+  mouseInsideColorPicker: false,
 }
 
 export const userInputReducer = (
@@ -22,6 +24,16 @@ export const userInputReducer = (
         return {
           ...state,
           mouseDown: false,
+        }
+      case 'SET_MOUSE_INSIDE_COLOR_PICKER':
+        return {
+          ...state, 
+          mouseInsideColorPicker: true,
+        }
+      case 'SET_MOUSE_OUTSIDE_COLOR_PICKER':
+        return {
+          ...state,
+          mouseInsideColorPicker: false,
         }
       default: 
       return state;

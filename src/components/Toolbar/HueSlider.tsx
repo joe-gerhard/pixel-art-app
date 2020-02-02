@@ -23,7 +23,7 @@ const HueSlider: React.FC = () => {
 
   return (
     <Styled.HueSlider ref={hueSliderRef} width={colorPickerWidth} onClick={handleClick}>
-      <Styled.Indicator hue={selectedHue} width={colorPickerWidth}/>
+      <Styled.HueIndicator hue={selectedHue} width={colorPickerWidth}/>
     </Styled.HueSlider>
   )
 }
