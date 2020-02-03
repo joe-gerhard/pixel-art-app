@@ -12,7 +12,6 @@ interface IProps {
 const App = styled('div')<IProps>(({ theme }) => css`
   display: flex;
   flex-direction: column;
-  align-items: center;
   background: ${theme.light};
   min-height: 100vh;
 `);
@@ -20,7 +19,7 @@ const App = styled('div')<IProps>(({ theme }) => css`
 const Main = styled('main')<IProps>(({ theme }) => css`
   display: flex;
   align-items: center;
-  padding: 20px;
+  width: 100vw;
 `);
 
 export const Styled = {

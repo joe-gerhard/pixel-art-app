@@ -17,9 +17,8 @@ const Canvas = styled('section')<IProps>(({ theme }) => css`
   justify-content: center;
   align-items: center;
   background: ${theme.dark};
-  width: 1000px;
-  height: 600px;
-  border-radius: 3px;
+  width: 100%;
+  height: calc(100vh - 50px);
   overflow: scroll;
 `);
 

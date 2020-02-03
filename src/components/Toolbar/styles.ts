@@ -15,8 +15,8 @@ const Toolbar = styled('section')<ToolbarProps>(({ theme }) => css`
   align-items: center;
   padding: 20px;
   background: ${theme.dark};
-  margin: 0 20px;
-  height: 600px;
+  height: calc(100vh - 50px);
+  border-right: 1px solid ${theme.primary};
 `);
 
 const ColorPicker = styled('div')<ToolbarProps>(({ theme, width, hue }) => css`

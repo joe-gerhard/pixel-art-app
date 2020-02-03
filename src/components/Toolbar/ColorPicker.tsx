@@ -9,7 +9,6 @@ import { UserInputActions } from '../../redux/actions/UserInputActions';
 const ColorPicker: React.FC = () => {
 
   const { colorPickerWidth, selectedHue } = useSelector((state: AppState) => state.toolbar);
-  const { mouseDown, mouseInsideColorPicker } = useSelector((state: AppState) => state.userInput);
 
   const toolbarDispatch = useDispatch<Dispatch<ToolbarActions>>();
   const userInputDispatch = useDispatch<Dispatch<UserInputActions>>();
