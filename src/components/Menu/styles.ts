@@ -8,13 +8,13 @@ interface MenuProps {
 
 const Menu = styled('nav')<MenuProps>(({ theme }) => css`
   position: fixed;
+  z-index: 1;
   height: 22px;
   display: flex;
   align-items: center;
   background: ${theme.primary};
   width: 100vw;
   padding: 0 20px;
-  z-index: 1;
 `);
 
 const Button = styled('button')<MenuProps>(({ theme, open }) => css`
@@ -33,23 +33,41 @@ const Button = styled('button')<MenuProps>(({ theme, open }) => css`
 `);
 
 const Dropdown = styled('div')<MenuProps>(({ theme, open }) => css`
-  visibility: ${open ? 'show' : 'hidden'};
-  opacity: ${open ? .9 : 0};
-  display: flex;
   position: absolute;
-  padding: 5px 0;
-  border-left: 1px solid ${theme.light + '55'};
-  border-right: 1px solid ${theme.light + '55'};
-  border-bottom: 1px solid ${theme.light + '55'};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  visibility: ${open ? 'show' : 'hidden'};
+  opacity: ${open ? 1 : 0};
+  display: flex;
   top: 22px;
   left: -1px;
+  padding: 5px 0;
+  border-left: 1px solid ${theme.light + '66'};
+  border-right: 1px solid ${theme.light + '66'};
+  border-bottom: 1px solid ${theme.light + '66'};
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   background: ${theme.primary};
   color: ${theme.light};
   width: 200px;
-  transition:  .3s;
-  z-index: 2;
+  transition: ${open ? 0 : '.3s'};
+
+  &:before {
+    content: ' ';
+    display: ${open ? 'block' : 'none'};
+    position: absolute;
+    visibility: ${open ? 'show' : 'hidden'};
+    opacity: ${open ? 1 : 0};
+    top: 0;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: -1;
+    transition: .3s .3s;
+  }
 `);
 
 const Option = styled('span')<MenuProps>(({ theme }) => css`
@@ -64,8 +82,14 @@ const Option = styled('span')<MenuProps>(({ theme }) => css`
 
 const DialogueDisplay = styled('div')<MenuProps>(({ theme, open }) => css`
   position: absolute;
+  display: flex;
+  padding: 20px;
+  color: ${theme.light};
   left: calc(50% - 200px);
   top: 100px;
+  border: 1px solid ${theme.light + '55'};
+  box-shadow: 0 0 0 1px black;
+  border-radius: 5px;
   visibility: ${open ? 'show' : 'hidden'};
   opacity: ${open ? 1 : 0};
   width: 400px;
@@ -74,10 +98,15 @@ const DialogueDisplay = styled('div')<MenuProps>(({ theme, open }) => css`
   transition: .3s;
 `);
 
+const BlackBorder = styled('div')<MenuProps>(({ theme }) => css`
+  border: 1px solid black;
+`);
+
 export const Styled = {
   Menu, 
   Button,
   Dropdown,
   Option,
   DialogueDisplay,
+  BlackBorder,
 }
