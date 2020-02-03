@@ -3,41 +3,32 @@ import { Styled } from './styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../redux/reducers/rootReducer';
 import { CanvasActions } from '../../redux/actions/CanvasActions';
+import DialogueDisplay from './DialogueDisplay';
 
 const Menu: React.FC = () => {
 
   const [ fileOpen, setFileOpen ] = useState<boolean>(false);
+  const [ dialogueOpen, setDialogueOpen ] = useState<boolean>(false);
+  const [ dialogueType, setDialogueType ] = useState<string | null>(null);
 
-  const { width, height } = useSelector((state: AppState) => state.canvas);
-  const dispatch = useDispatch<Dispatch<CanvasActions>>()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    switch(e.target.name) {
-      case 'width': 
-        dispatch({ type: 'SET_WIDTH', value: parseInt(e.target.value)})
-        break
-      case 'height': 
-        dispatch({ type: 'SET_HEIGHT', value: parseInt(e.target.value)})
-        break
-      default: return
-    }
+
+  const handleClickNewFile = (): void => {
+    setDialogueType('newFile');
+    setDialogueOpen(true);
   }
-
-  const handleApplyCanvasSize = (): void => {
-    dispatch({ type: 'DRAW_PIXELS' })
-  } 
 
   return (
     <Styled.Menu>
       <Styled.Button onClick={() => setFileOpen(!fileOpen)} open={fileOpen}>
         File
         <Styled.Dropdown open={fileOpen} >
-          <Styled.Option>
+          <Styled.Option onClick={handleClickNewFile}>
             New...
           </Styled.Option>
         </Styled.Dropdown>
       </Styled.Button>
-
+      <DialogueDisplay open={dialogueOpen} type={dialogueType}/>
     </Styled.Menu>
   )
 }

@@ -62,9 +62,22 @@ const Option = styled('span')<MenuProps>(({ theme }) => css`
   }
 `);
 
+const DialogueDisplay = styled('div')<MenuProps>(({ theme, open }) => css`
+  position: absolute;
+  left: calc(50% - 200px);
+  top: 100px;
+  visibility: ${open ? 'show' : 'hidden'};
+  opacity: ${open ? 1 : 0};
+  width: 400px;
+  height: 300px;
+  background: ${theme.primary};
+  transition: .3s;
+`);
+
 export const Styled = {
   Menu, 
   Button,
   Dropdown,
   Option,
+  DialogueDisplay,
 }
