@@ -15,7 +15,7 @@ const Toolbar = styled('section')<ToolbarProps>(({ theme }) => css`
   align-items: center;
   padding: 20px;
   background: ${theme.dark};
-  height: calc(100vh - 50px);
+  height: 100%;
   border-right: 1px solid ${theme.primary};
 `);
 

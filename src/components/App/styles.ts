@@ -13,13 +13,16 @@ const App = styled('div')<IProps>(({ theme }) => css`
   display: flex;
   flex-direction: column;
   background: ${theme.light};
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 `);
 
 const Main = styled('main')<IProps>(({ theme }) => css`
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
 `);
 
 export const Styled = {

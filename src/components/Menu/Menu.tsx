@@ -1,10 +1,12 @@
-import React, { Dispatch, ChangeEvent } from 'react';
+import React, { Dispatch, ChangeEvent, useState } from 'react';
 import { Styled } from './styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../redux/reducers/rootReducer';
 import { CanvasActions } from '../../redux/actions/CanvasActions';
 
 const Menu: React.FC = () => {
+
+  const [ fileOpen, setFileOpen ] = useState<boolean>(false);
 
   const { width, height } = useSelector((state: AppState) => state.canvas);
   const dispatch = useDispatch<Dispatch<CanvasActions>>()
@@ -27,10 +29,15 @@ const Menu: React.FC = () => {
 
   return (
     <Styled.Menu>
-      <label htmlFor="width">width:</label>
-      <input name="width" id="width" type="number" value={width} onChange={handleChange}/>
-      <input name="height" id="height" type="number" value={height} onChange={handleChange}/>
-      <button onClick={handleApplyCanvasSize}>Apply</button>
+      <Styled.Button onClick={() => setFileOpen(!fileOpen)} open={fileOpen}>
+        File
+        <Styled.Dropdown open={fileOpen} >
+          <Styled.Option>
+            New...
+          </Styled.Option>
+        </Styled.Dropdown>
+      </Styled.Button>
+
     </Styled.Menu>
   )
 }
