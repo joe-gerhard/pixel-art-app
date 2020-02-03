@@ -1,34 +1,35 @@
-import React, { Dispatch, ChangeEvent, useState } from 'react';
+import React, { useState, Dispatch } from 'react';
 import { Styled } from './styles';
+import DialogueDisplay from './DialogueDisplay';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../redux/reducers/rootReducer';
-import { CanvasActions } from '../../redux/actions/CanvasActions';
-import DialogueDisplay from './DialogueDisplay';
+import { MenuActions } from '../../redux/actions/MenuActions';
 
 const Menu: React.FC = () => {
 
   const [ fileOpen, setFileOpen ] = useState<boolean>(false);
-  const [ dialogueOpen, setDialogueOpen ] = useState<boolean>(false);
   const [ dialogueType, setDialogueType ] = useState<string | null>(null);
+  const { dialogueOpen } = useSelector((state: AppState) => state.menu);
+  const menuDispatch = useDispatch<Dispatch<MenuActions>>()
 
 
 
   const handleClickNewFile = (): void => {
     setDialogueType('newFile');
-    setDialogueOpen(true);
+    menuDispatch({ type: 'SET_DIALOGUE_OPEN' });
   }
 
   return (
     <Styled.Menu>
-      <Styled.Button onClick={() => setFileOpen(!fileOpen)} open={fileOpen}>
+      <Styled.MenuButton onClick={() => setFileOpen(!fileOpen)} open={fileOpen}>
         File
         <Styled.Dropdown open={fileOpen} >
           <Styled.Option onClick={handleClickNewFile}>
             New...
           </Styled.Option>
         </Styled.Dropdown>
-      </Styled.Button>
-      <DialogueDisplay open={dialogueOpen} type={dialogueType}/>
+      </Styled.MenuButton>
+      <DialogueDisplay open={dialogueOpen} type={dialogueType} />
     </Styled.Menu>
   )
 }

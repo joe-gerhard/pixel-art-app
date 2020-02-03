@@ -17,7 +17,7 @@ const Menu = styled('nav')<MenuProps>(({ theme }) => css`
   padding: 0 20px;
 `);
 
-const Button = styled('button')<MenuProps>(({ theme, open }) => css`
+const MenuButton = styled('button')<MenuProps>(({ theme, open }) => css`
   position: relative;
   background: ${open ? theme.accent + 'AA' : 'transparent'};
   color: ${theme.light};
@@ -98,15 +98,25 @@ const DialogueDisplay = styled('div')<MenuProps>(({ theme, open }) => css`
   transition: .3s;
 `);
 
-const BlackBorder = styled('div')<MenuProps>(({ theme }) => css`
-  border: 1px solid black;
+const NewFileDialogue = styled('div')<MenuProps>(({ theme }) => css`
+  display: flex;
+  flex-direction: column;
+`); 
+
+const Input = styled('input')<MenuProps>(({ theme }) => css`
+  background: ${theme.light};
+  border: 1px solid ${theme.light + 'AA'};
+  width: 50px;
+  margin-left: 10px;
+  font-size: 14px;
 `);
 
 export const Styled = {
   Menu, 
-  Button,
+  MenuButton,
   Dropdown,
   Option,
   DialogueDisplay,
-  BlackBorder,
+  NewFileDialogue,
+  Input,
 }
