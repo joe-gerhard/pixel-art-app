@@ -34,18 +34,19 @@ const NewFileDialogue: React.FC = () => {
 
   return (
     <Styled.NewFileDialogue>
-      <div>
+      <h3>New File</h3>
+      <Styled.InputGroup>
         <label htmlFor="height">Height</label>
         <Styled.Input name="height" id="height" type="number" onChange={handleChange} value={height}/>
-      </div>
-      <div>
+      </Styled.InputGroup>
+      <Styled.InputGroup>
         <label htmlFor="width">Width</label>
         <Styled.Input name="width" id="width" type="number" onChange={handleChange} value={width}/>
-      </div>
-      <div>
-        <button onClick={handleCancel}>Cancel</button>
-        <button onClick={handleApplyCanvasSize}>Confirm</button>
-      </div>
+      </Styled.InputGroup>
+      <Styled.ButtonGroup>
+        <Styled.Button onClick={handleCancel}>Cancel</Styled.Button>
+        <Styled.Button onClick={handleApplyCanvasSize}>Confirm</Styled.Button>
+      </Styled.ButtonGroup>
     </Styled.NewFileDialogue>
   )
 }

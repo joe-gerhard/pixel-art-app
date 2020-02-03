@@ -101,14 +101,59 @@ const DialogueDisplay = styled('div')<MenuProps>(({ theme, open }) => css`
 const NewFileDialogue = styled('div')<MenuProps>(({ theme }) => css`
   display: flex;
   flex-direction: column;
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 `); 
 
 const Input = styled('input')<MenuProps>(({ theme }) => css`
-  background: ${theme.light};
+  background: ${theme.primary};
+  color: ${theme.light};
   border: 1px solid ${theme.light + 'AA'};
+  border-radius: 2px;
+  padding: 2px 5px;
   width: 50px;
   margin-left: 10px;
   font-size: 14px;
+  transition: .3s;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 2px 2px ${theme.accent + 'AA'};
+  }
+`);
+
+const InputGroup = styled('div')<MenuProps>(({ theme }) => css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  margin-bottom: 10px;
+`);
+
+const Button = styled('button')<MenuProps>(({ theme }) => css`
+  background: ${theme.accent + 'AA'};
+  color: ${theme.light};
+  padding: 2px 5px;
+  border: 1px solid ${theme.light};
+  border-radius: 3px;
+  margin-right: 10px;
+  transition: .3s;
+
+  &:hover {
+    background: ${theme.accent + 'DD'};
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 2px 2px ${theme.light + 'AA'};
+  }
+`);
+
+const ButtonGroup = styled('div')<MenuProps>(({ theme }) => css`
+  margin-top: auto;
 `);
 
 export const Styled = {
@@ -119,4 +164,7 @@ export const Styled = {
   DialogueDisplay,
   NewFileDialogue,
   Input,
+  InputGroup,
+  Button,
+  ButtonGroup,
 }
