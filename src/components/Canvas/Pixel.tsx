@@ -12,24 +12,28 @@ interface IProps {
 }
 
 
-const Pixel: React.FC<IProps> = ({ color, x, y }) => {
-
-  const { mouseDown } = useSelector((state: AppState) => state.userInput);
-  const { selectedColor } = useSelector((state: AppState) => state.toolbar);
-
-  const dispatch = useDispatch<Dispatch<CanvasActions>>();
-
-  const handleChangePixelColor = (): void => {
-    dispatch({ type: 'COLOR_PIXEL', pixel: { x, y }, color: selectedColor})
+const Pixel: React.FC<IProps> = React.memo(({ color, x, y }) => {
+  
+    console.log(`drawing pixel (${x}, ${y})`)
+  
+    const { mouseDown } = useSelector((state: AppState) => state.userInput);
+    const { selectedColor } = useSelector((state: AppState) => state.toolbar);
+  
+    const dispatch = useDispatch<Dispatch<CanvasActions>>();
+  
+    const handleChangePixelColor = (): void => {
+      dispatch({ type: 'COLOR_PIXEL', pixel: { x, y }, color: selectedColor})
+    }
+  
+    const handleMouseEnter = (): void => {
+      if(mouseDown) handleChangePixelColor()
+    }
+  
+    return (
+      <Styled.Pixel color={color} onMouseDown={handleChangePixelColor} onMouseEnter={handleMouseEnter} />
+    )
   }
 
-  const handleMouseEnter = (): void => {
-    if(mouseDown) handleChangePixelColor()
-  }
-
-  return (
-    <Styled.Pixel color={color} onMouseDown={handleChangePixelColor} onMouseEnter={handleMouseEnter} />
-  )
-}
+)
 
 export default Pixel;
